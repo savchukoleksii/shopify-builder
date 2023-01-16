@@ -32,8 +32,6 @@ const createServer = async () => {
 			return;
 		}
 
-		const tunnelUrl = `${config.store.replace(".myshopify.com", "").replaceAll(".", "-").replaceAll("_", "-")}-${config['theme_id']}-${Math.random().toString(36).slice(0, 8)}.loca.lt`;
-
 		let shop = { domain: null };
 		try {
 			shop = await axios(`https://${config.store}/admin/api/2022-10/shop.json?fields=id,domain`, {
@@ -153,12 +151,18 @@ const createServer = async () => {
 		}));
 
 		const queryStringComponents = ['_ab=0', 'pb=0', '_fd=0', '_sc=1'];
-		const browserSyncCallback 	= async function () {
+		const browserSyncCallback 	= async function (error, bs) {
+			if (error) {
+				gulplog.error(ansi.red(error.message));
+				return;
+			}
+
 			gulplog.info(`Preview: ${preview_url}`);
 		};
 
 		const browserSyncOptions = {
 			port: port,
+			host: config.store,
 			notify: false,
 			directory: true,
 			open: !browserSyncServer,
@@ -173,6 +177,7 @@ const createServer = async () => {
 					function(req, res, next) {
 						const prefix = req.url.indexOf('?') > -1 ? '&' : '?';
 						req.url += prefix + queryStringComponents.join('&');
+
 						next();
 					}
 				],
@@ -197,7 +202,6 @@ const createServer = async () => {
 			},
 			rewriteRules: rewriteRules,
 			online: true,
-			tunnel: tunnelUrl,
 		};
 
 		browserSyncServer = browserSync.create();
@@ -211,7 +215,7 @@ const server = async () => {
 	await createServer();
 
 	const reloadServer = async () => {
-		if(browserSyncServer) {
+		if (browserSyncServer) {
 			await browserSyncServer.exit();
 		}
 
