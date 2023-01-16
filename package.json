@@ -1,6 +1,6 @@
 {
   "name": "@savchukoleksii/builder",
-  "version": "1.0.28",
+  "version": "1.0.31",
   "description": "",
   "main": "index.js",
   "bin": {
@@ -29,6 +29,7 @@
     "cross-spawn": "^7.0.3",
     "cssnano": "^5.1.14",
     "find-root": "^1.1.0",
+    "glob": "^8.0.3",
     "gulp": "^4.0.2",
     "gulp-cached": "^1.1.1",
     "gulp-clean": "^0.4.0",
@@ -52,10 +53,18 @@
     "kill-port": "^2.0.1",
     "node-datetime": "^2.1.2",
     "postcss": "^8.1.7",
+    "postcss-calc": "^8.2.4",
+    "postcss-combine-duplicated-selectors": "^10.0.3",
+    "postcss-discard-overridden": "^5.1.0",
+    "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-import": "^13.0.0",
+    "postcss-momentum-scrolling": "^3.14.22",
     "postcss-prettify": "^0.3.4",
     "postcss-reporter": "^6.0.1",
     "postcss-scss": "^4.0.6",
+    "postcss-svg-slim": "^2.0.4",
+    "postcss-will-change": "^4.0.1",
+    "postcss-will-change-transition": "^1.2.0",
     "prompt-confirm": "^2.0.4",
     "regenerator-runtime": "^0.13.7",
     "sass": "^1.56.2",
@@ -70,5 +79,7 @@
     "yaml": "^1.10.0",
     "yargs": "^16.0.4-candidate.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "postcss-viewport-height-correction": "^1.1.1"
+  }
 }

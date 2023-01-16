@@ -14,13 +14,29 @@ const webpackConfig = {
 	output: {
 		path: themePath("./dist/assets"),
 		publicPath: "/assets/",
-		filename: `${files.filePrefix || ''}[name].build.js`
+		filename: `${files.filePrefix || ''}[name].build.js`,
+		chunkFilename: '[name].[contenthash].chunk.build.js',
 	},
 	resolve: {
 		extensions: ['.js', '.mjs'],
 		alias: {
 			"@": themePath("./src/scripts"),
 		}
+	},
+	optimization: {
+		splitChunks: {
+			minSize: 0,
+			cacheGroups: {
+				vendor: {
+					test: /[\\/]node_modules[\\/]/,
+					name: 'vendors',
+					priority: -10,
+					reuseExistingChunk: true,
+					enforce: true,
+					chunks: 'all'
+				},
+			}
+		},
 	},
 	module: {
 		rules: [

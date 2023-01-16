@@ -60,10 +60,14 @@ module.exports = (scssFiles = files.scss, options = {}) => {
 					}
 				}).on('error', sass.logError)
 			)
-			.pipe(rename({
-				prefix: files.filePrefix || '',
-				suffix: '.build',
-				dirname: ""
+			.pipe(rename(function (file, original) {
+				const dirname = path.basename(original.dirname);
+
+				return {
+					basename: `${files.filePrefix || ''}${dirname !== "styles" ? `${dirname}-` : ""}${file.basename}.build`,
+					dirname: "",
+					extname: ".css",
+				};
 			}))
 			.pipe(postcss(plugins))
 			.pipe(sourcemaps.write('./'))

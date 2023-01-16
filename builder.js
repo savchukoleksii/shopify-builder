@@ -129,10 +129,21 @@ builder.files = {
 	scss: [
 		"!./src/styles/_*.{scss,sass}",
 		"./src/styles/*.{scss,sass}",
+		"!./src/styles/layouts/_*.{scss,sass}",
+		"./src/styles/layouts/*.{scss,sass}",
+		"!./src/styles/templates/_*.{scss,sass}",
+		"./src/styles/templates/*.{scss,sass}",
+		"!./src/styles/sections/_*.{scss,sass}",
+		"./src/styles/sections/*.{scss,sass}",
 	],
 	scssLiquid: "./src/styles/*.css.liquid",
 	compileOutput: "./dist/assets",
-	js: "./src/scripts/*.js",
+	js: [
+		"./src/scripts/*.js",
+		"./src/scripts/layouts/*.js",
+		"./src/scripts/templates/*.js",
+		"./src/scripts/sections/*.js",
+	],
 	copy: [
 		"./src/assets/*.*",
 		"./src/config/*.json",
@@ -199,6 +210,15 @@ builder.options = {
 	postcss: {
 		syntax: 'postcss-scss',
 		plugins: {
+			// viewPortHeightCorrection: builder.require("postcss-flexbugs-fixes"),
+			svgSlim: builder.require("postcss-svg-slim"),
+			discardOverridden: builder.require("postcss-discard-overridden"),
+			momentumScrolling: builder.require("postcss-momentum-scrolling"),
+			calc: builder.require("postcss-calc"),
+			combineDuplicatedSelectors: builder.require("postcss-combine-duplicated-selectors")({
+				removeDuplicatedProperties: true
+			}),
+			flexBugsFixes: builder.require("postcss-flexbugs-fixes"),
 			autoprefixer: builder.require("autoprefixer"),
 			cssImport: builder.require("postcss-import"),
 		}

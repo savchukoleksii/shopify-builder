@@ -3,12 +3,15 @@ const glob			= require('glob');
 const path  		= require("path");
 
 module.exports = (files) => {
-	const filepath = path.join(themeRoot, files);
+	const filepath = path.join(themeRoot, files).replaceAll("\\", "/");
 
 	return glob.sync(filepath).reduce(function(entries, entry){
+		const parsed_entry = path.parse(entry);
+		const directory = path.basename(parsed_entry.dir).toLowerCase();
+
 		return {
 			...entries,
-			[path.parse(entry).name]: entry
+			[`${directory !== "scripts" ? `${directory}-` : ''}${parsed_entry.name.replaceAll(".", '-')}`]: entry
 		};
 	}, {});
 };
