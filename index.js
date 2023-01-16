@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-
-const builder 	= require("./builder");
-const { spawn } = builder.packages;
+const startBuilder = require("./builder");
 
 function callback() {
+	const { spawn } = builder.packages;
+
 	const args = [
 		...process.argv.splice(2, process.argv.length),
 		"--gulpfile", builder.gulpFile,
@@ -16,4 +16,4 @@ function callback() {
 	});
 }
 
-builder(callback);
+startBuilder(callback);
