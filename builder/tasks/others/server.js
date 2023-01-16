@@ -32,6 +32,8 @@ const createServer = async () => {
 			return;
 		}
 
+		const tunnelUrl = `${config.store.replace(".myshopify.com", "").replaceAll(".", "-").replaceAll("_", "-")}-${config['theme_id']}-${Math.random().toString(36).slice(0, 8)}.loca.lt`;
+
 		let shop = { domain: null };
 		try {
 			shop = await axios(`https://${config.store}/admin/api/2022-10/shop.json?fields=id,domain`, {
@@ -193,7 +195,9 @@ const createServer = async () => {
 					}
 				}
 			},
-			rewriteRules: rewriteRules
+			rewriteRules: rewriteRules,
+			online: true,
+			tunnel: tunnelUrl,
 		};
 
 		browserSyncServer = browserSync.create();
