@@ -22,7 +22,6 @@ builder.packages = {
 	browserSync: builder.require("browser-sync"),
 	spawn: builder.require("cross-spawn"),
 	cssnano: builder.require("cssnano"),
-	fibers: builder.require("fibers"),
 	findRoot: builder.require("find-root"),
 	gulp: builder.require("gulp"),
 	cached: builder.require("gulp-cached"),
