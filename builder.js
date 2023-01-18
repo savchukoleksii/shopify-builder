@@ -311,7 +311,7 @@ module.exports = function (callback) {
 					.option("cli", {
 						describe: "Will run this command with Shopify CLI",
 						type: 'boolean',
-						default: true
+						default: false
 					});
 			},
 			composedCallback
