@@ -150,6 +150,7 @@ builder.files = {
 		"./src/layout/*.{liquid,json}",
 		"./src/locales/*.json",
 		"./src/sections/*.liquid",
+		"./src/sections/*.json",
 		"./src/snippets/*.*",
 		"./src/templates/*.liquid",
 		"./src/templates/customers/*.liquid",

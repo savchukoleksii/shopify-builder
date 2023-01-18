@@ -27,7 +27,7 @@ const watch = () => {
         translationsWatch,
         settingsWatch,
         configWatch,
-		...(argv.cli ? [cliDev] : [themekitWatch]),
+		...(argv.cli === true ? [cliDev] : [themekitWatch]),
         server,
     );
 

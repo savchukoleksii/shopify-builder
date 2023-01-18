@@ -6,7 +6,7 @@ const argv 			 	= builder.args;
 const { gulp }      	= builder.packages;
 const deploy        	= gulp.series(...[
 	build,
-	...(argv.cli ? [cliPush] : [themekitDeploy]),
+	...(argv.cli === true ? [cliPush] : [themekitDeploy]),
 ]);
 deploy.displayName  = "deploy";
 
