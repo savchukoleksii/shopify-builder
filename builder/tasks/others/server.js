@@ -86,7 +86,19 @@ const createServer = async () => {
 			stats: "detailed",
 			mode: "development",
 			entry: () => {
-				const entryFiles = entries("src/scripts/**.js");
+				const entryPoints = [
+					'src/scripts/*.js',
+					'src/scripts/sections/*.js',
+					'src/scripts/templates/*.js',
+					'src/scripts/layouts/*.js',
+				];
+
+				const entryFiles = entryPoints.reduce((entryPoints, entryPoint) => {
+					return {
+						...entryPoints,
+						...entries(entryPoint),
+					}
+				}, {});
 
 				return {
 					webpackHotMiddleware: 'webpack-hot-middleware/client?reload=true',
@@ -223,7 +235,12 @@ const server = async () => {
 	};
 
 	reloadServer.displayName = "reload:server";
-	gulp.watch("./src/scripts/*.js").on("all", function (event, file) {
+	gulp.watch([
+		"./src/scripts/*.js",
+		"./src/scripts/sections/*.js",
+		"./src/scripts/templates/*.js",
+		"./src/scripts/layouts/*.js",
+	]).on("all", function (event, file) {
 		if(!["add", "unlink"].includes(event)) {
 			return;
 		}
