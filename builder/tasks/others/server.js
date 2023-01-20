@@ -239,7 +239,6 @@ const server = async () => {
 		"./src/scripts/*.js",
 		"./src/scripts/sections/*.js",
 		"./src/scripts/templates/*.js",
-		"./src/scripts/layouts/*.js",
 	]).on("all", function (event, file) {
 		if(!["add", "unlink"].includes(event)) {
 			return;
