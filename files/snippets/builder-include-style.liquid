@@ -1,0 +1,11 @@
+{%- if path -%}
+	{%- assign filename = path | replace: '/', '-' | replace: '.css', '' | replace: '.sass', '' | replace: '.scss', '' | append: '.build'  -%}
+
+	{%- if settings.enable_assets_minification -%}
+		{%- assign filename = filename | append: '.min' -%}
+	{%- endif -%}
+
+	{%- assign filename = filename | append: '.css' -%}
+
+	<link rel="stylesheet" href="{{- filename | asset_url -}}">
+{%- endif -%}

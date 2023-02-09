@@ -1,0 +1,20 @@
+{%- if path -%}
+	{%- case mode -%}
+		{%- when 'async' -%}
+			{%- assign script_mode = "async" -%}
+		{%- when 'none' -%}
+			{%- assign script_mode = "" -%}
+		{%- default -%}
+			{%- assign script_mode = "defer" -%}
+	{%- endcase -%}
+
+	{%- assign filename = path | replace: '/', '-' | replace: '.js', '' | append: '.build'  -%}
+
+	{%- if settings.enable_assets_minification -%}
+		{%- assign filename = filename | append: '.min' -%}
+	{%- endif -%}
+
+	{%- assign filename = filename | append: '.js' -%}
+
+	<script src="{{- filename | asset_url -}}" {{ script_mode }}></script>
+{%- endif -%}

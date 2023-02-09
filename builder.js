@@ -154,11 +154,13 @@ builder.files = {
 		"./src/snippets/*.*",
 		"./src/templates/*.liquid",
 		"./src/templates/customers/*.liquid",
+		`${currentDirectory}/files/templates/*.liquid`,
+		`${currentDirectory}/files/snippets/*.*`,
 		"!./src/snippets/variables.liquid",
 		"!./src/templates/index.settings.{liquid,json}",
 		"!./src/templates/index.translations.{liquid,json}",
 		"!./src/assets/*.build.{js,css}",
-		"!./src/assets/*.build.min.{js,css}"
+		"!./src/assets/*.build.min.{js,css}",
 	],
 	copyJsonTemplates: [
 		"./src/templates/*.json",

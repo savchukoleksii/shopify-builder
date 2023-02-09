@@ -6,8 +6,8 @@ const buildTranslations = () => {
 			allowEmpty: true
 		})
         .pipe(translations())
-        .pipe(rename("index.translations.liquid"))
-        .pipe(gulp.dest(themePath('./dist/templates')));
+        .pipe(rename("object-translations-json.liquid"))
+        .pipe(gulp.dest(themePath('./dist/snippets')));
 };
 
 buildTranslations.displayName = "translations:build";

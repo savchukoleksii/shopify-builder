@@ -1,0 +1,5 @@
+{%- if name -%}
+	{%- assign filename = "icon" | append: "-" | append: name -%}
+
+	{%- render filename -%}
+{%- endif -%}
