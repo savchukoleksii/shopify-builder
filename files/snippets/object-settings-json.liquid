@@ -1,0 +1,22 @@
+{%- comment -%}
+	Auto-generated file. Dont change!
+{%- endcomment -%}
+
+{%- assign settings_json = "" -%}
+{%- assign separator = "," -%}
+
+{%- for key in settings -%}
+	{%- if settings_json != "" -%}
+		{%- assign settings_json = settings_json | append: separator -%}
+	{%- endif -%}
+
+	{%- capture item -%}
+		"{{- key -}}": {{- settings[key] | json -}}
+	{%- endcapture -%}
+
+	{%- assign settings_json = settings_json | append: item -%}
+{%- endfor -%}
+
+{%- assign settings_json = "{" | append: settings_json | append: "}" -%}
+
+{{- settings_json -}}

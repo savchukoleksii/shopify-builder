@@ -1,0 +1,18 @@
+{%- comment -%}
+	Auto-generated file. Dont change!
+{%- endcomment -%}
+
+{%- layout none -%}
+{%- capture content -%}
+	{{- content_for_index -}}
+{%- endcapture -%}
+
+{%- capture settings_json -%}
+	{%- render 'object-settings-json' -%}
+{%- endcapture -%}
+
+{%- if translations_json -%}
+	<script type="application/json" data-json-response>{{- settings_json -}}</script>
+{%- else -%}
+	<script type="application/json" data-json-response>{}</script>
+{%- endif -%}
