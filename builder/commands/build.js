@@ -5,6 +5,7 @@ const buildTranslations = require("../tasks/others/translations");
 const buildSettings     = require("../tasks/others/settings");
 const buildCssVarianblesFromSettings = require("../tasks/styles/variables");
 const copyBuild         = require("../tasks/others/copy");
+const copyRequired      = require("../tasks/others/copyRequired");
 const svgBuild          = require("../tasks/images/svg");
 const minifyJs          = require("../tasks/js/minify");
 const clearThemekitWorkingDirectory = require("../tasks/others/clearThemekitWorkingDirectory");
@@ -27,6 +28,7 @@ const build = gulp.series([
         buildCssVarianblesFromSettings
     ),
     copyBuild,
+	copyRequired,
     svgBuild,
 ]);
 

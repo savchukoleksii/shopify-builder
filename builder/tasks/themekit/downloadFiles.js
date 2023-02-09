@@ -10,7 +10,9 @@ async function downloadSettings() {
 		'/snippets/atb-icon-([a-zA-Z0-9\\_\\-\\.]+)\\.liquid/',
 		'templates/index.settings.liquid',
 		'templates/index.translations.liquid',
+		'snippets/object-translations-json.liquid',
 		'snippets/variables.css.liquid',
+		'/snippets/builder-([a-zA-Z0-9\\_\\-\\.]+)\\.liquid/',
 		'/assets/icon-([a-zA-Z0-9\\_\\-\\.]+)\\.svg/',
 		'templates/*.json'
 	];
