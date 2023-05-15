@@ -4,7 +4,7 @@
 			{%- assign script_mode = "async" -%}
 		{%- when 'none' -%}
 			{%- assign script_mode = "" -%}
-		{%- default -%}
+		{%- else -%}
 			{%- assign script_mode = "defer" -%}
 	{%- endcase -%}
 
